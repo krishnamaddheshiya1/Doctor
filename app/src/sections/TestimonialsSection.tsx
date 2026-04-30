@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { testimonials as staticTestimonials } from "@/lib/data";
+import { useTestimonials } from "@/hooks/useTestimonials";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function TestimonialsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const testimonials = staticTestimonials;
+  const { testimonials, loading } = useTestimonials();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const fallbackTestimonials = [
@@ -91,80 +91,88 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Main testimonial card */}
-        <div className="testi-animate max-w-4xl mx-auto">
-          <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-slate-100 shadow-xl shadow-slate-200/50">
-            {/* Quote icon */}
-            <div className="absolute top-6 left-8 w-12 h-12 bg-sky-100 rounded-2xl flex items-center justify-center">
-              <Quote className="w-6 h-6 text-sky-500" />
+          {loading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="w-8 h-8 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
             </div>
+          ) : (
+            <>
+              {/* Main testimonial card */}
+              <div className="testi-animate max-w-4xl mx-auto">
+                <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-slate-100 shadow-xl shadow-slate-200/50">
+                  {/* Quote icon */}
+                  <div className="absolute top-6 left-8 w-12 h-12 bg-sky-100 rounded-2xl flex items-center justify-center">
+                    <Quote className="w-6 h-6 text-sky-500" />
+                  </div>
 
-            <div className="mt-8">
-              {/* Stars */}
-              <div className="flex gap-1 mb-6">
-                {Array.from({ length: 5 }).map((_x: unknown, i: number) => (
-                  <Star
-                    key={i}
-                    className={`w-5 h-5 ${
-                      i < Math.floor(current.rating)
-                        ? "text-amber-400 fill-amber-400"
-                        : "text-slate-200"
-                    }`}
-                  />
-                ))}
-              </div>
+                  <div className="mt-8">
+                    {/* Stars */}
+                    <div className="flex gap-1 mb-6">
+                      {Array.from({ length: 5 }).map((_x: unknown, i: number) => (
+                        <Star
+                          key={i}
+                          className={`w-5 h-5 ${
+                            i < Math.floor(current.rating)
+                              ? "text-amber-400 fill-amber-400"
+                              : "text-slate-200"
+                          }`}
+                        />
+                      ))}
+                    </div>
 
-              <p className="text-xl md:text-2xl text-slate-700 leading-relaxed mb-8 font-light">
-                "{current.content}"
-              </p>
+                    <p className="text-xl md:text-2xl text-slate-700 leading-relaxed mb-8 font-light">
+                      "{current.content}"
+                    </p>
 
-              <div className="flex items-center gap-4">
-                <img
-                  src={current.avatar ?? "/testimonial-01.jpg"}
-                  alt={current.name}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-sky-100"
-                />
-                <div>
-                  <p className="font-semibold text-slate-900 text-lg">
-                    {current.name}
-                  </p>
-                  <p className="text-slate-500 text-sm">{current.role}</p>
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={current.avatar ?? "/testimonial-01.jpg"}
+                        alt={current.name}
+                        className="w-14 h-14 rounded-full object-cover border-2 border-sky-100"
+                      />
+                      <div>
+                        <p className="font-semibold text-slate-900 text-lg">
+                          {current.name}
+                        </p>
+                        <p className="text-slate-500 text-sm">{current.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Navigation */}
+                <div className="flex items-center justify-center gap-4 mt-8">
+                  <button
+                    onClick={prev}
+                    className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+
+                  <div className="flex gap-2">
+                    {data.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrentIndex(i)}
+                        className={`w-2.5 h-2.5 rounded-full transition-all ${
+                          i === currentIndex
+                            ? "bg-sky-500 w-8"
+                            : "bg-slate-200 hover:bg-slate-300"
+                        }`}
+                      />
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={next}
+                    className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={prev}
-              className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <div className="flex gap-2">
-              {data.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    i === currentIndex
-                      ? "bg-sky-500 w-8"
-                      : "bg-slate-200 hover:bg-slate-300"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
+            </>
+          )}
       </div>
     </section>
   );

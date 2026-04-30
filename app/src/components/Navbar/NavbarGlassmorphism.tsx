@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { Menu, X, Phone, User as UserIcon, LogOut } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import type { User } from "@supabase/supabase-js";
@@ -83,16 +83,20 @@ export default function NavbarGlassmorphism({ config }: { config: NavbarConfig }
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.label}
-              href={link.link}
-              className={`text-sm font-medium transition-colors hover:opacity-70 ${
-                scrolled ? "text-slate-700" : "text-white/90"
-              }`}
+              to={link.link}
+              className={({ isActive }) => 
+                `text-sm font-medium transition-colors hover:opacity-70 ${
+                  isActive 
+                    ? scrolled ? "text-sky-600" : "text-sky-400"
+                    : scrolled ? "text-slate-700" : "text-white/90"
+                }`
+              }
               style={{ color: scrolled ? undefined : config.theme?.textColor }}
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </div>
 
@@ -135,12 +139,12 @@ export default function NavbarGlassmorphism({ config }: { config: NavbarConfig }
           )}
 
           {config.cta && (
-            <a
-              href={config.cta.link}
+            <Link
+              to={config.cta.link}
               className="px-5 py-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-sm font-medium rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-sky-500/25"
             >
               {config.cta.label}
-            </a>
+            </Link>
           )}
         </div>
 
@@ -159,14 +163,16 @@ export default function NavbarGlassmorphism({ config }: { config: NavbarConfig }
       {menuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-white/20 px-6 py-6 space-y-4 rounded-b-2xl">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.label}
-              href={link.link}
-              className="block text-slate-700 font-medium"
+              to={link.link}
+              className={({ isActive }) => 
+                `block font-medium ${isActive ? "text-sky-500" : "text-slate-700"}`
+              }
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
           
           {user ? (
@@ -190,12 +196,12 @@ export default function NavbarGlassmorphism({ config }: { config: NavbarConfig }
           )}
 
           {config.cta && (
-            <a
-              href={config.cta.link}
+            <Link
+              to={config.cta.link}
               className="block w-full text-center px-5 py-3 bg-sky-500 text-white font-medium rounded-full"
             >
               {config.cta.label}
-            </a>
+            </Link>
           )}
         </div>
       )}

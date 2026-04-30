@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { services as staticServices } from "@/lib/data";
+import { useServices } from "@/hooks/useServices";
 import {
   Sparkles,
   AlignCenter,
@@ -146,7 +146,7 @@ function ServiceCard({
 export default function Services3D() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const services = staticServices;
+  const { services, loading } = useServices();
 
   useEffect(() => {
     if (!titleRef.current) return;
@@ -224,11 +224,17 @@ export default function Services3D() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {displayServices.map((service: typeof displayServices[0], index: number) => (
-            <ServiceCard key={service.title} service={service as ServiceCardData} index={index} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center items-center py-12">
+            <div className="w-8 h-8 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {displayServices.map((service: typeof displayServices[0], index: number) => (
+              <ServiceCard key={service.title} service={service as ServiceCardData} index={index} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

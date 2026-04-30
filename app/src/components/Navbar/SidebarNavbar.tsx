@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router";
 import { Menu, X } from "lucide-react";
 import type { NavbarConfig } from "@/types/navbar";
 
@@ -34,25 +35,29 @@ export default function SidebarNavbar({ config }: { config: NavbarConfig }) {
           
           <nav className="flex-1 space-y-2">
             {config.menu.map((item) => (
-              <a
+              <NavLink
                 key={item.label}
-                href={item.link}
-                className="block px-4 py-2 rounded-md hover:bg-white/10 transition-colors"
+                to={item.link}
+                className={({ isActive }) => 
+                  `block px-4 py-2 rounded-md transition-colors ${
+                    isActive ? "bg-white/20 font-semibold" : "hover:bg-white/10"
+                  }`
+                }
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
           </nav>
           
           {config.cta && (
             <div className="mt-auto pt-6 border-t border-white/10">
-              <a
-                href={config.cta.link}
+              <Link
+                to={config.cta.link}
                 className="block w-full text-center px-4 py-2 bg-sky-500 text-white rounded-md hover:bg-sky-600 transition-colors"
               >
                 {config.cta.label}
-              </a>
+              </Link>
             </div>
           )}
         </div>

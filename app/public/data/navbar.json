@@ -5,15 +5,14 @@
       "type": "glass",
       "logo": "/assets/logo.png",
       "menu": [
-        { "label": "Services", "link": "/#services" },
-        { "label": "Results", "link": "/#before-after" },
-        { "label": "Doctor", "link": "/#doctor" },
-        { "label": "Reviews", "link": "/#testimonials" },
-        { "label": "Contact", "link": "/#appointment" }
+        { "label": "Home", "link": "/" },
+        { "label": "Services", "link": "/services" },
+        { "label": "About", "link": "/about" },
+        { "label": "Contact", "link": "/contact" }
       ],
       "cta": {
         "label": "Book Appointment",
-        "link": "/#appointment"
+        "link": "/contact"
       },
       "theme": {
         "bgColor": "transparent",
@@ -25,11 +24,13 @@
       "logo": "/assets/logo.png",
       "menu": [
         { "label": "Home", "link": "/" },
-        { "label": "Clinic", "link": "/#clinic" }
+        { "label": "Services", "link": "/services" },
+        { "label": "About", "link": "/about" },
+        { "label": "Contact", "link": "/contact" }
       ],
       "cta": {
         "label": "Contact Us",
-        "link": "/#contact"
+        "link": "/contact"
       }
     },
     "sidebar": {
