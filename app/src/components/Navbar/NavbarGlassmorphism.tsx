@@ -3,16 +3,9 @@ import { Link, useNavigate } from "react-router";
 import { Menu, X, Phone, User as UserIcon, LogOut } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import type { User } from "@supabase/supabase-js";
+import type { NavbarConfig } from "@/types/navbar";
 
-interface NavbarGlassProps {
-  siteName?: string;
-  phone?: string;
-}
-
-export default function NavbarGlassmorphism({
-  siteName = "Aurora Dental",
-  phone = "+1 (555) 234-5678",
-}: NavbarGlassProps) {
+export default function NavbarGlassmorphism({ config }: { config: NavbarConfig }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -41,13 +34,7 @@ export default function NavbarGlassmorphism({
     navigate("/auth");
   };
 
-  const navLinks = [
-    { label: "Services", href: "#services" },
-    { label: "Results", href: "#before-after" },
-    { label: "Doctor", href: "#doctor" },
-    { label: "Reviews", href: "#testimonials" },
-    { label: "Contact", href: "#appointment" },
-  ];
+  const navLinks = config.menu;
 
   return (
     <nav
@@ -56,6 +43,9 @@ export default function NavbarGlassmorphism({
           ? "bg-white/70 backdrop-blur-2xl shadow-lg border border-white/20"
           : "bg-white/10 backdrop-blur-md border border-white/10"
       }`}
+      style={{
+        backgroundColor: scrolled ? undefined : config.theme?.bgColor,
+      }}
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link 
@@ -68,30 +58,38 @@ export default function NavbarGlassmorphism({
           }}
           className="flex items-center gap-2"
         >
-          <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-              scrolled ? "bg-sky-500" : "bg-white/20"
-            }`}
-          >
-            <span className="text-white text-xs font-bold">A</span>
-          </div>
-          <span
-            className={`text-lg font-semibold tracking-tight transition-colors ${
-              scrolled ? "text-slate-900" : "text-white"
-            }`}
-          >
-            {siteName}
-          </span>
+          {config.logo ? (
+            <img src={config.logo} alt="Logo" className="h-8 object-contain" />
+          ) : (
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                scrolled ? "bg-sky-500" : "bg-white/20"
+              }`}
+            >
+              <span className="text-white text-xs font-bold">A</span>
+            </div>
+          )}
+          {!config.logo && (
+            <span
+              className={`text-lg font-semibold tracking-tight transition-colors ${
+                scrolled ? "text-slate-900" : "text-white"
+              }`}
+              style={{ color: scrolled ? undefined : config.theme?.textColor }}
+            >
+              Aurora Dental
+            </span>
+          )}
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={link.link}
               className={`text-sm font-medium transition-colors hover:opacity-70 ${
                 scrolled ? "text-slate-700" : "text-white/90"
               }`}
+              style={{ color: scrolled ? undefined : config.theme?.textColor }}
             >
               {link.label}
             </a>
@@ -100,13 +98,14 @@ export default function NavbarGlassmorphism({
 
         <div className="hidden md:flex items-center gap-4">
           <a
-            href={`tel:${phone}`}
+            href="tel:+15552345678"
             className={`flex items-center gap-2 text-sm font-medium transition-colors mr-2 ${
               scrolled ? "text-sky-600" : "text-white/80"
             }`}
+            style={{ color: scrolled ? undefined : config.theme?.textColor }}
           >
             <Phone className="w-4 h-4" />
-            {phone}
+            +1 (555) 234-5678
           </a>
 
           {user ? (
@@ -135,12 +134,14 @@ export default function NavbarGlassmorphism({
             </Link>
           )}
 
-          <a
-            href="#appointment"
-            className="px-5 py-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-sm font-medium rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-sky-500/25"
-          >
-            Book Now
-          </a>
+          {config.cta && (
+            <a
+              href={config.cta.link}
+              className="px-5 py-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white text-sm font-medium rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-sky-500/25"
+            >
+              {config.cta.label}
+            </a>
+          )}
         </div>
 
         <button
@@ -160,7 +161,7 @@ export default function NavbarGlassmorphism({
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={link.link}
               className="block text-slate-700 font-medium"
               onClick={() => setMenuOpen(false)}
             >
@@ -188,12 +189,14 @@ export default function NavbarGlassmorphism({
             </Link>
           )}
 
-          <a
-            href="#appointment"
-            className="block w-full text-center px-5 py-3 bg-sky-500 text-white font-medium rounded-full"
-          >
-            Book Appointment
-          </a>
+          {config.cta && (
+            <a
+              href={config.cta.link}
+              className="block w-full text-center px-5 py-3 bg-sky-500 text-white font-medium rounded-full"
+            >
+              {config.cta.label}
+            </a>
+          )}
         </div>
       )}
     </nav>

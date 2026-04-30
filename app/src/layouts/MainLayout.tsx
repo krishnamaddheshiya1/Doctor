@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import NavbarSelector from "@/components/Navbar/NavbarSelector";
+import NavbarLoader from "@/components/Navbar/NavbarLoader";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface MainLayoutProps {
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className="min-h-[100dvh] bg-slate-50">
-      <NavbarSelector />
+      <NavbarLoader />
       <main>{children}</main>
     </div>
   );

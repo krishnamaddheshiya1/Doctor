@@ -1,0 +1,45 @@
+{
+  "activeNavbar": "glass",
+  "navbars": {
+    "glass": {
+      "type": "glass",
+      "logo": "/assets/logo.png",
+      "menu": [
+        { "label": "Services", "link": "/#services" },
+        { "label": "Results", "link": "/#before-after" },
+        { "label": "Doctor", "link": "/#doctor" },
+        { "label": "Reviews", "link": "/#testimonials" },
+        { "label": "Contact", "link": "/#appointment" }
+      ],
+      "cta": {
+        "label": "Book Appointment",
+        "link": "/#appointment"
+      },
+      "theme": {
+        "bgColor": "transparent",
+        "textColor": "#ffffff"
+      }
+    },
+    "minimal": {
+      "type": "minimal",
+      "logo": "/assets/logo.png",
+      "menu": [
+        { "label": "Home", "link": "/" },
+        { "label": "Clinic", "link": "/#clinic" }
+      ],
+      "cta": {
+        "label": "Contact Us",
+        "link": "/#contact"
+      }
+    },
+    "sidebar": {
+      "type": "sidebar",
+      "logo": "/assets/logo.png",
+      "menu": [
+        { "label": "Dashboard", "link": "/admin" },
+        { "label": "Appointments", "link": "/admin/appointments" },
+        { "label": "Patients", "link": "/admin/patients" }
+      ]
+    }
+  }
+}
