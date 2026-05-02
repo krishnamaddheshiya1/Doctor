@@ -1,0 +1,129 @@
+﻿
+> my-app@0.0.0 lint
+> eslint .
+
+
+C:\Users\hp\Downloads\Dental\app\src\components\ui\badge.tsx
+  46:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\hp\Downloads\Dental\app\src\components\ui\button-group.tsx
+  82:3  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\hp\Downloads\Dental\app\src\components\ui\button.tsx
+  62:18  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\hp\Downloads\Dental\app\src\components\ui\form.tsx
+  159:3  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\hp\Downloads\Dental\app\src\components\ui\navigation-menu.tsx
+  167:3  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\hp\Downloads\Dental\app\src\components\ui\sidebar.tsx
+  611:26  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\hp\Downloads\Dental\app\src\components\ui\sidebar.tsx:611:26
+  609 |   // Random width between 50 to 90%.
+  610 |   const width = React.useMemo(() => {
+> 611 |     return `${Math.floor(Math.random() * 40) + 50}%`
+      |                          ^^^^^^^^^^^^^ Cannot call impure function
+  612 |   }, [])
+  613 |
+  614 |   return (  react-hooks/purity
+  725:3   error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          react-refresh/only-export-components
+
+C:\Users\hp\Downloads\Dental\app\src\components\ui\toggle.tsx
+  45:18  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\hp\Downloads\Dental\app\src\hooks\useDoctors.ts
+  20:17  error  '_setError' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\hp\Downloads\Dental\app\src\hooks\useServices.ts
+  18:17  error  '_setError' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\hp\Downloads\Dental\app\src\hooks\useTestimonials.ts
+  17:17  error  '_setError' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\hp\Downloads\Dental\app\src\pages\Auth.tsx
+  38:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\hp\Downloads\Dental\app\src\sections\AppointmentSection.tsx
+  65:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\hp\Downloads\Dental\app\src\sections\Hero3D.tsx
+  182:25  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\hp\Downloads\Dental\app\src\sections\Hero3D.tsx:182:25
+  180 |             className="absolute rounded-full bg-sky-400/20 animate-float"
+  181 |             style={{
+> 182 |               width: `${Math.random() * 6 + 2}px`,
+      |                         ^^^^^^^^^^^^^ Cannot call impure function
+  183 |               height: `${Math.random() * 6 + 2}px`,
+  184 |               left: `${Math.random() * 100}%`,
+  185 |               top: `${Math.random() * 100}%`,                         react-hooks/purity
+  183:26  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\hp\Downloads\Dental\app\src\sections\Hero3D.tsx:183:26
+  181 |             style={{
+  182 |               width: `${Math.random() * 6 + 2}px`,
+> 183 |               height: `${Math.random() * 6 + 2}px`,
+      |                          ^^^^^^^^^^^^^ Cannot call impure function
+  184 |               left: `${Math.random() * 100}%`,
+  185 |               top: `${Math.random() * 100}%`,
+  186 |               animationDelay: `${Math.random() * 5}s`,                                           react-hooks/purity
+  184:24  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\hp\Downloads\Dental\app\src\sections\Hero3D.tsx:184:24
+  182 |               width: `${Math.random() * 6 + 2}px`,
+  183 |               height: `${Math.random() * 6 + 2}px`,
+> 184 |               left: `${Math.random() * 100}%`,
+      |                        ^^^^^^^^^^^^^ Cannot call impure function
+  185 |               top: `${Math.random() * 100}%`,
+  186 |               animationDelay: `${Math.random() * 5}s`,
+  187 |               animationDuration: `${Math.random() * 10 + 10}s`,  react-hooks/purity
+  185:23  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\hp\Downloads\Dental\app\src\sections\Hero3D.tsx:185:23
+  183 |               height: `${Math.random() * 6 + 2}px`,
+  184 |               left: `${Math.random() * 100}%`,
+> 185 |               top: `${Math.random() * 100}%`,
+      |                       ^^^^^^^^^^^^^ Cannot call impure function
+  186 |               animationDelay: `${Math.random() * 5}s`,
+  187 |               animationDuration: `${Math.random() * 10 + 10}s`,
+  188 |             }}                                       react-hooks/purity
+  186:34  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\hp\Downloads\Dental\app\src\sections\Hero3D.tsx:186:34
+  184 |               left: `${Math.random() * 100}%`,
+  185 |               top: `${Math.random() * 100}%`,
+> 186 |               animationDelay: `${Math.random() * 5}s`,
+      |                                  ^^^^^^^^^^^^^ Cannot call impure function
+  187 |               animationDuration: `${Math.random() * 10 + 10}s`,
+  188 |             }}
+  189 |           />                                                                   react-hooks/purity
+  187:37  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\hp\Downloads\Dental\app\src\sections\Hero3D.tsx:187:37
+  185 |               top: `${Math.random() * 100}%`,
+  186 |               animationDelay: `${Math.random() * 5}s`,
+> 187 |               animationDuration: `${Math.random() * 10 + 10}s`,
+      |                                     ^^^^^^^^^^^^^ Cannot call impure function
+  188 |             }}
+  189 |           />
+  190 |         ))}                                                                                                   react-hooks/purity
+
+Γ£û 19 problems (19 errors, 0 warnings)
+

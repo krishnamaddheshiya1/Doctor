@@ -1,4 +1,5 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
+import { Link } from "react-router";
 import { gsap } from "gsap";
 import { heroContent } from "@/lib/data";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -10,6 +11,17 @@ export default function Hero3D() {
   const imageRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const hero = heroContent;
+
+  const [particles] = useState(() => 
+    Array.from({ length: 20 }).map(() => ({
+      width: `${Math.random() * 6 + 2}px`,
+      height: `${Math.random() * 6 + 2}px`,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      animationDelay: `${Math.random() * 5}s`,
+      animationDuration: `${Math.random() * 10 + 10}s`,
+    }))
+  );
 
   // Neural grid spotlight effect
   const drawGrid = useCallback(() => {
@@ -174,18 +186,11 @@ export default function Hero3D() {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {particles.map((style, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-sky-400/20 animate-float"
-            style={{
-              width: `${Math.random() * 6 + 2}px`,
-              height: `${Math.random() * 6 + 2}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${Math.random() * 10 + 10}s`,
-            }}
+            style={style}
           />
         ))}
       </div>
@@ -206,19 +211,19 @@ export default function Hero3D() {
             {subheadline}
           </p>
           <div className="hero-animate flex flex-wrap gap-4">
-            <a
-              href="#appointment"
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-3 px-8 py-4 bg-sky-500 text-white font-semibold rounded-full hover:bg-sky-600 transition-all shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40"
             >
               {ctaText}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              to="/services"
               className="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition-colors backdrop-blur-sm"
             >
               Explore Services
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { services as staticServices } from "@/lib/data";
 import { supabase } from "@/lib/supabaseClient";
-import { Calendar, User, Phone, Mail, MessageSquare, Send, CheckCircle } from "lucide-react";
+import { Calendar, Clock, User, Phone, Mail, MessageSquare, Send, CheckCircle } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +14,7 @@ export default function AppointmentSection() {
     phone: "",
     email: "",
     date: "",
+    time: "",
     service: "",
     message: "",
   });
@@ -46,27 +47,30 @@ export default function AppointmentSection() {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    try {
-      const { error: submitError } = await supabase.from('Appointments Table').insert([
+
+    const { error: submitError } = await supabase
+      .from("appointments")
+      .insert([
         {
           name: formData.name,
-          email: formData.email || null,
           phone: formData.phone,
-          date: formData.date,
+          email: formData.email || null,
           service: formData.service,
+          date: formData.date,
+          time: formData.time || null,
           message: formData.message || null,
         }
       ]);
-      if (submitError) throw submitError;
-      
+
+    setIsSubmitting(false);
+
+    if (submitError) {
+      console.log(submitError);
+      setError(submitError.message || "Booking failed. Please try again.");
+    } else {
       setSubmitted(true);
-      setFormData({ name: "", phone: "", email: "", date: "", service: "", message: "" });
+      setFormData({ name: "", phone: "", email: "", date: "", time: "", service: "", message: "" });
       setTimeout(() => setSubmitted(false), 5000);
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message || "Failed to submit appointment. Please try again.");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -217,6 +221,19 @@ export default function AppointmentSection() {
                         value={formData.date}
                         onChange={(e) =>
                           setFormData({ ...formData, date: e.target.value })
+                        }
+                        className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-sky-500 transition-colors [color-scheme:dark]"
+                      />
+                    </div>
+
+                    <div className="relative">
+                      <Clock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                      <input
+                        type="time"
+                        placeholder="Preferred Time"
+                        value={formData.time}
+                        onChange={(e) =>
+                          setFormData({ ...formData, time: e.target.value })
                         }
                         className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-sky-500 transition-colors [color-scheme:dark]"
                       />

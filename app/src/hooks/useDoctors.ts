@@ -17,7 +17,7 @@ export interface Doctor {
 export function useDoctors() {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, _setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchDoctors() {

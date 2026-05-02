@@ -3,7 +3,7 @@
   "navbars": {
     "glass": {
       "type": "glass",
-      "logo": "/assets/logo.png",
+      "logo": "",
       "menu": [
         { "label": "Home", "link": "/" },
         { "label": "Services", "link": "/services" },
@@ -21,7 +21,7 @@
     },
     "minimal": {
       "type": "minimal",
-      "logo": "/assets/logo.png",
+      "logo": "",
       "menu": [
         { "label": "Home", "link": "/" },
         { "label": "Services", "link": "/services" },
@@ -35,7 +35,7 @@
     },
     "sidebar": {
       "type": "sidebar",
-      "logo": "/assets/logo.png",
+      "logo": "",
       "menu": [
         { "label": "Dashboard", "link": "/admin" },
         { "label": "Appointments", "link": "/admin/appointments" },

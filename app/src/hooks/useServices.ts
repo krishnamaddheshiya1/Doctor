@@ -15,7 +15,7 @@ export interface Service {
 export function useServices() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, _setError] = useState<string | null>(null);
+  const [error] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchServices() {

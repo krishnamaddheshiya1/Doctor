@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { siteConfig } from "@/lib/data";
 import {
   MapPin,
@@ -68,19 +69,19 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
-                { label: "Services", href: "#services" },
-                { label: "Before & After", href: "#before-after" },
-                { label: "Meet the Doctor", href: "#doctor" },
-                { label: "Patient Reviews", href: "#testimonials" },
-                { label: "Book Appointment", href: "#appointment" },
+                { label: "Services", href: "/services" },
+                { label: "Before & After", href: "/services" },
+                { label: "Meet the Doctor", href: "/about" },
+                { label: "Patient Reviews", href: "/about" },
+                { label: "Book Appointment", href: "/contact" },
               ].map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-slate-400 hover:text-sky-400 transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -98,9 +99,12 @@ export default function Footer() {
                 "General Dentistry",
               ].map((service) => (
                 <li key={service}>
-                  <span className="text-slate-400 hover:text-sky-400 transition-colors cursor-pointer">
+                  <Link
+                    to="/services"
+                    className="text-slate-400 hover:text-sky-400 transition-colors cursor-pointer"
+                  >
                     {service}
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -164,3 +168,4 @@ export default function Footer() {
     </footer>
   );
 }
+

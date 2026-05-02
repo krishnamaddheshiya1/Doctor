@@ -35,8 +35,8 @@ export default function Auth() {
         if (error) throw error;
         setSuccess("Check your email for the confirmation link.");
       }
-    } catch (err: any) {
-      setError(err.message || "An error occurred during authentication.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred during authentication.");
     } finally {
       setLoading(false);
     }
