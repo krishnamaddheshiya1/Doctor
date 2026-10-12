@@ -102,32 +102,78 @@ function getAdminJsPath() {
     return locations[0];
 }
 
+let adminHtmlContent = "";
+let adminJsContent = "";
+let indexHtmlContent = "";
+let styleCssContent = "";
+let scriptJsContent = "";
+
+try { adminHtmlContent = require("./adminHtml"); } catch (_) {}
+try { adminJsContent = require("./adminJs"); } catch (_) {}
+try { indexHtmlContent = require("./indexHtml"); } catch (_) {}
+try { styleCssContent = require("./styleCss"); } catch (_) {}
+try { scriptJsContent = require("./scriptJs"); } catch (_) {}
+
 // Serve main customer website
-app.get("/", function (req, res, next) {
+app.get("/", function (req, res) {
     const indexPath = getIndexHtmlPath();
     if (fs.existsSync(indexPath)) {
         return res.sendFile(indexPath);
     }
-    next();
+    if (indexHtmlContent) {
+        res.setHeader("Content-Type", "text/html; charset=utf-8");
+        return res.send(indexHtmlContent);
+    }
+    res.status(200).send("<h1>DMG Waffles</h1>");
 });
 
 // Serve admin dashboard at /manga
-app.get(["/manga", "/manga/index.html"], function (req, res, next) {
+app.get(["/manga", "/manga/index.html"], function (req, res) {
     const mangaPath = getMangaAdminHtmlPath();
     if (fs.existsSync(mangaPath)) {
         return res.sendFile(mangaPath);
     }
-    next();
+    if (adminHtmlContent) {
+        res.setHeader("Content-Type", "text/html; charset=utf-8");
+        return res.send(adminHtmlContent);
+    }
+    res.status(200).send("<h1>Owner Dashboard</h1>");
 });
 
 // Serve admin javascript for both /manga and /admin
 app.get(["/manga/admin.js", "/admin.js"], function (req, res) {
     const jsPath = getAdminJsPath();
     if (fs.existsSync(jsPath)) {
-        res.setHeader("Content-Type", "application/javascript");
+        res.setHeader("Content-Type", "application/javascript; charset=utf-8");
         return res.sendFile(jsPath);
     }
+    if (adminJsContent) {
+        res.setHeader("Content-Type", "application/javascript; charset=utf-8");
+        return res.send(adminJsContent);
+    }
     res.status(404).end();
+});
+
+// Serve style.css fallback
+app.get("/style.css", function (req, res, next) {
+    const p = path.join(__dirname, "style.css");
+    if (fs.existsSync(p)) return res.sendFile(p);
+    if (styleCssContent) {
+        res.setHeader("Content-Type", "text/css; charset=utf-8");
+        return res.send(styleCssContent);
+    }
+    next();
+});
+
+// Serve script.js fallback
+app.get("/script.js", function (req, res, next) {
+    const p = path.join(__dirname, "script.js");
+    if (fs.existsSync(p)) return res.sendFile(p);
+    if (scriptJsContent) {
+        res.setHeader("Content-Type", "application/javascript; charset=utf-8");
+        return res.send(scriptJsContent);
+    }
+    next();
 });
 
 // Redirect old /admin to /manga
