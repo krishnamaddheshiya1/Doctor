@@ -41,11 +41,55 @@ app.use(
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-const PUBLIC_DIR = path.join(__dirname, "..");
-app.use(express.static(PUBLIC_DIR));
+const PUBLIC_DIR = path.join(__dirname, "..", "public");
+const ROOT_DIR = path.join(__dirname, "..");
 
-app.get("/admin", function (req, res) {
-    res.sendFile(path.join(PUBLIC_DIR, "admin.html"));
+app.use(express.static(PUBLIC_DIR));
+app.use(express.static(ROOT_DIR));
+
+function getIndexHtmlPath() {
+    const locations = [
+        path.join(PUBLIC_DIR, "index.html"),
+        path.join(ROOT_DIR, "index.html"),
+        path.join(process.cwd(), "public", "index.html"),
+        path.join(process.cwd(), "index.html"),
+        path.join(__dirname, "index.html")
+    ];
+    for (const loc of locations) {
+        if (fs.existsSync(loc)) return loc;
+    }
+    return locations[0];
+}
+
+function getAdminHtmlPath() {
+    const locations = [
+        path.join(PUBLIC_DIR, "admin", "index.html"),
+        path.join(PUBLIC_DIR, "admin.html"),
+        path.join(ROOT_DIR, "admin.html"),
+        path.join(process.cwd(), "public", "admin", "index.html"),
+        path.join(process.cwd(), "public", "admin.html"),
+        path.join(__dirname, "admin.html")
+    ];
+    for (const loc of locations) {
+        if (fs.existsSync(loc)) return loc;
+    }
+    return locations[0];
+}
+
+app.get("/", function (req, res, next) {
+    const indexPath = getIndexHtmlPath();
+    if (fs.existsSync(indexPath)) {
+        return res.sendFile(indexPath);
+    }
+    next();
+});
+
+app.get("/admin", function (req, res, next) {
+    const adminPath = getAdminHtmlPath();
+    if (fs.existsSync(adminPath)) {
+        return res.sendFile(adminPath);
+    }
+    next();
 });
 
 function readOrders() {
