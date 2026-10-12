@@ -1,0 +1,14 @@
+{
+  "name": "dmg-waffles",
+  "version": "1.0.0",
+  "description": "DMG Waffles order management and online ordering system",
+  "scripts": {
+    "dev": "node \"dmg waffles/backend/server.js\"",
+    "start": "node \"dmg waffles/backend/server.js\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.2",
+    "express": "^5.1.0"
+  }
+}

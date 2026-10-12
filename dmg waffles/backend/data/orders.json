@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1791828587414pvu8ls",
+    "orderNumber": "DMG587320",
+    "customerName": "Dhruv",
+    "customerPhone": "9701962294",
+    "customerAddress": "Abraham Lincoln, Parul University",
+    "orderType": "delivery",
+    "paymentMethod": "cod",
+    "items": [
+      {
+        "id": 1,
+        "name": "Triple Chocolate",
+        "category": "MINI",
+        "price": 49,
+        "quantity": 2,
+        "itemTotal": 98
+      }
+    ],
+    "subtotal": 98,
+    "deliveryCharge": 20,
+    "couponDiscount": 0,
+    "sundayDiscount": 0,
+    "total": 118,
+    "status": "Pending",
+    "createdAt": "2026-10-12T18:09:47.414Z",
+    "updatedAt": "2026-10-12T18:09:47.414Z"
+  }
+]

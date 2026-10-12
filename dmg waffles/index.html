@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DMG Waffles | Premium Waffles</title>
+
+    <meta
+        name="description"
+        content="DMG Waffles - Premium waffles, delicious toppings and irresistible flavors."
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-logo">DMG</div>
+        <div class="loader-text">WAFFLES</div>
+    </div>
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="#home" class="logo">
+                <span>DMG</span>
+                <small>WAFFLES</small>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#offers">Offers</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+
+                <button
+                    class="theme-btn"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                >
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button
+    class="cart-btn"
+    id="cartButton"
+    aria-label="Open cart"
+>
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="cartCount">0</span>
+</button>
+
+<button
+    class="theme-btn"
+    id="myOrdersButton"
+    aria-label="My Orders"
+    title="My Orders"
+>
+    <i class="fa-solid fa-receipt"></i>
+</button>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section class="hero-section" id="home">
+
+            <div class="hero-content">
+             
+                <span class="hero-small-text">
+                    PREMIUM WAFFLES
+                </span>
+
+                <h1>
+                    CRISPY.
+                    <br>
+                    <strong>DELICIOUS.</strong>
+                    <br>
+                    UNFORGETTABLE.
+                </h1>
+
+                <p>
+                    Freshly made waffles loaded with delicious
+                    toppings, chocolate, fruits and love.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#menu" class="primary-btn">
+                        <i class="fa-solid fa-utensils"></i>
+                        Explore Menu
+                    </a>
+
+                    <a href="#offers" class="secondary-btn">
+                        View Offers
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <div class="hero-circle"></div>
+
+                <div class="hero-waffle">
+                <div><img src="waffle.jpg.jpeg" alt="Waffle"></div>
+                    <div class="waffle-grid">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
+
+                <div class="floating-card card-one">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Fresh & Crispy</span>
+                </div>
+
+                <div class="floating-card card-two">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Made With Love</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="features-section">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-cookie-bite"></i>
+                </div>
+
+                <div>
+                    <h3>Freshly Made</h3>
+                    <p>Prepared fresh for every order.</p>
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+
+                <div>
+                    <h3>Quality Ingredients</h3>
+                    <p>Premium ingredients in every bite.</p>
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <div>
+                    <h3>Fast Service</h3>
+                    <p>Quick preparation and service.</p>
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div>
+                    <h3>Made With Love</h3>
+                    <p>Every waffle made specially for you.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="menu-section" id="menu">
+
+            <div class="section-heading">
+
+                <span>OUR MENU</span>
+
+                <h2>
+                    Choose Your
+                    <strong>Favorite</strong>
+                </h2>
+
+                <p>
+                    Delicious waffles made fresh with premium
+                    toppings and irresistible flavors.
+                </p>
+
+            </div>
+
+
+            <div class="menu-controls">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search waffles..."
+                    >
+
+                </div>
+
+
+                <div class="category-buttons">
+
+                    <button
+                        class="category-btn category active"
+                        data-category="all"
+                    >
+                        All 
+                    </button>
+
+                    <button
+                        class="category-btn category"
+                        data-category="MINI"
+                    >
+                        Mini
+                    </button>
+
+                    <button
+                        class="category-btn category"
+                        data-category="Stick"
+                    >
+                        Stick
+                    </button>
+
+                    <button
+                        class="category-btn category"
+                        data-category="Bubble"
+                    >
+                        Bubble
+                    </button>
+
+                    <button
+                        class="category-btn category"
+                        data-category="Belgian"
+                    >
+                        Belgian
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="products-grid"
+                id="products"
+            >
+
+                <article class="product-card" data-category="MINI">
+<div class="product-image">
+    <span class="product-tag">Mini</span>
+    <img src="triple.jpg.jpeg" alt="Triple Chocolate">
+</div>
+
+<div class="product-info">
+    <h3>Triple Chocolate</h3>
+
+    <p>Mini Stick Waffle • Triple chocolate</p>
+
+    <div class="product-bottom">
+        <span class="product-price">
+            ₹49
+        </span>
+
+        <button
+            class="add-button"
+            onclick="addToCart(1)"
+            title="Add to cart"
+        >
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+</div>
+
+                </article>
+
+
+                <article class="product-card" data-category="MINI">
+
+                    <div class="product-image">
+    <span class="product-tag">Mini</span>
+    <img src="double.jpg.png" alt="Double Chocolate">
+</div>
+
+<div class="product-info">
+
+    <h3>Dark Chocolate</h3>
+
+    <p>Mini Stick Waffle • Dark chocolate</p>
+
+    <div class="product-bottom">
+
+        <span class="product-price">
+            ₹49
+        </span>
+
+        <button
+            class="add-button"
+            onclick="addToCart(3)"
+            title="Add to cart"
+        >
+            <i class="fa-solid fa-plus"></i>
+        </button>
+
+    </div>
+
+</div>
+
+                </article>
+
+
+                <article class="product-card" data-category="MINI">
+
+                    <div class="product-image">
+                        <span class="product-tag">Mini</span>
+                        <img src="dark.jpg.png" alt="Dark Chocolate">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Dark Chocolate</h3>
+
+                        <p>Mini Stick Waffle • Dark chocolate</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹49
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(3)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="MINI">
+
+                    <div class="product-image">
+                        <span class="product-tag">Mini</span>
+                        <img src="brown.jpg.png" alt="Brown Chocolate">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Brown Chocolate</h3>
+
+                        <p>Mini Stick Waffle • Brown chocolate</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹49
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(4)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="MINI">
+
+                    <div class="product-image">
+                        <span class="product-tag">Mini</span>
+                        <img src="rainbow.jpg.png" alt="Rainbow truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Rainbow Truffle</h3>
+
+                        <p>Mini Stick Waffle • Rainbow truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹59
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(5)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="MINI">
+
+                    <div class="product-image">
+                        <span class="product-tag">Mini</span>
+                        <img src="white.jpg.png" alt="White Chocolate">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>White Chocolate</h3>
+
+                        <p>Mini Stick Waffle • White chocolate</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹69
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(6)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="MINI">
+
+                    <div class="product-image">
+                        <span class="product-tag">Mini</span>
+                        <img src="kitkat.jpg.png" alt="Kitkat truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Crunchy KitKat</h3>
+
+                        <p>Mini Stick Waffle • Crunchy KitKat</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹99
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(7)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="MINI">
+
+                    <div class="product-image">
+                        <span class="product-tag">Mini</span>
+                        <img src="nuttela.jpg.png" alt="Nutella truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Nutella Truffle</h3>
+
+                        <p>Mini Stick Waffle • Nutella truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹119
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(8)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="darkStick.jpg.jpeg" alt="Dark chocolate fantasy">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Dark Chocolate Fantasy</h3>
+
+                        <p>Stick Waffle • Dark chocolate fantasy</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹129
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(9)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="milkStick.jpg" alt="Milk chocolate fantasy">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Milk Chocolate Fantasy</h3>
+
+                        <p>Stick Waffle • Milk chocolate fantasy</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹129
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(10)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="darkmilk.jpg" alt="Dark milk delight">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Dark Milk Delight</h3>
+
+                        <p>Stick Waffle • Dark milk delight</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹129
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(11)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="whiltemilk.jpg" alt="White milk delight">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>White Milk Delight</h3>
+
+                        <p>Stick Waffle • White milk delight</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹149
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(12)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="belgiumtriple.jpg" alt="Belgium Triple chocolate">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Belgium Triple Chocolate</h3>
+
+                        <p>Stick Waffle • Belgium Triple chocolate</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹159
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(13)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="rainbowStick.jpg" alt="Rainbow truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Rainbow Truffle</h3>
+
+                        <p>Stick Waffle • Rainbow truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹159
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(14)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="crackleoreo.jpg" alt="Crackle Oreo">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Crackle Oreo</h3>
+
+                        <p>Stick Waffle • Crackle Oreo</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹179
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(15)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="crunchykitkat.jpg" alt="Crunchy KitKat">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Crunchy KitKat</h3>
+
+                        <p>Stick Waffle • Crunchy KitKat</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹179
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(16)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="nutellaStick.jpg" alt=" Nutella truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Nutella Truffle</h3>
+
+                        <p>Stick Waffle • Nutella truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹199
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(17)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Stick">
+
+                    <div class="product-image">
+                        <span class="product-tag">Stick</span>
+                        <img src="nutellakitkatStick.jpg" alt=" Nutella KitKat truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>KitKat Nutella Truffle</h3>
+
+                        <p>Stick Waffle • KitKat Nutella truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹229
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(18)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Bubble">
+
+                    <div class="product-image">
+                        <span class="product-tag">Bubble</span>
+                        <img src="milkbubble.jpg" alt=" Milk chocolate fantasy">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Milk Chocolate Fantasy</h3>
+
+                        <p>Bubble Bites • Milk chocolate fantasy</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹99
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(19)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Bubble">
+
+                    <div class="product-image">
+                        <span class="product-tag">Bubble</span>
+                        <img src="triplebubble.jpg" alt="Belgian triple chocolate">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Belgian Triple Chocolate</h3>
+
+                        <p>Bubble Bites • Belgian triple chocolate</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹129
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(20)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Bubble">
+
+                    <div class="product-image">
+                        <span class="product-tag">Bubble</span>
+                        <img src="oreobubble.jpg" alt=" Crunchy Oreo">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Crunchy Oreo</h3>
+
+                        <p>Bubble Bites • Crunchy Oreo</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹149
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(21)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Bubble">
+
+                    <div class="product-image">
+                        <span class="product-tag">Bubble</span>
+                        <img src="kitkatbubble.jpg" alt=" KitKat break">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>KitKat Break</h3>
+
+                        <p>Bubble Bites • KitKat break</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹149
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(22)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Bubble">
+
+                    <div class="product-image">
+                        <span class="product-tag">Bubble</span>
+                        <img src="nutellabubble.jpg" alt="Nutella truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Nutella Truffle</h3>
+
+                        <p>Bubble Bites • Nutella truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹169
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(23)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Bubble">
+
+                    <div class="product-image">
+                        <span class="product-tag">Bubble</span>
+                        <img src="KitKatNutellabubble.jpg" alt="KitKat Nutella">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>KitKat Nutella</h3>
+
+                        <p>Bubble Bites • KitKat Nutella</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹199
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(24)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Belgian">
+
+                    <div class="product-image">
+                        <span class="product-tag">Belgian</span>
+                        <img src="belgiandark.jpg" alt="Dark chocolate fantasy">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Dark Chocolate Fantasy</h3>
+
+                        <p>Belgian Waffle • Dark chocolate fantasy</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹99
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(25)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Belgian">
+
+                    <div class="product-image">
+                        <span class="product-tag">Belgian</span>
+                        <img src="milkbelgium.png" alt="Milk chocolate fantasy">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Milk Chocolate Fantasy</h3>
+
+                        <p>Belgian Waffle • Milk chocolate fantasy</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹99
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(26)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Belgian">
+
+                    <div class="product-image">
+                        <span class="product-tag">Belgian</span>
+                        <img src="belgiumtriple1.jpg" alt="Belgium Triple chocolate">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Belgium Triple Chocolate</h3>
+
+                        <p>Belgian Waffle • Belgium Triple chocolate</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹129
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(27)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Belgian">
+
+                    <div class="product-image">
+                        <span class="product-tag">Belgian</span>
+                        <img src="belgiumrainbow.jpg" alt="Rainbow truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Rainbow Truffle</h3>
+
+                        <p>Belgian Waffle • Rainbow truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹129
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(28)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Belgian">
+
+                    <div class="product-image">
+                        <span class="product-tag">Belgian</span>
+                        <img src="belgiumoreo.jpg" alt="Crackle Oreo">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Crackle Oreo</h3>
+
+                        <p>Belgian Waffle • Crackle Oreo</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹149
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(29)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Belgian">
+
+                    <div class="product-image">
+                        <span class="product-tag">Belgian</span>
+                        <img src="belgiumkitkat.jpg" alt="Crunchy KitKat">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Crunchy KitKat</h3>
+
+                        <p>Belgian Waffle • Crunchy KitKat</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹149
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(30)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Belgian">
+
+                    <div class="product-image">
+                        <span class="product-tag">Belgian</span>
+                        <img src="belgiumnutella.jpg" alt="Nutella truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>Nutella Truffle</h3>
+
+                        <p>Belgian Waffle • Nutella truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹169
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(31)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card" data-category="Belgian">
+
+                    <div class="product-image">
+                        <span class="product-tag">Belgian</span>
+                        <img src="belgiumnutellakitkat.jpg" alt="KitKat Nutella Truffle">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+
+                    <div class="product-info">
+
+                        <h3>KitKat Nutella Truffle</h3>
+
+                        <p>Belgian Waffle • KitKat Nutella truffle</p>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                ₹229
+                            </span>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(32)"
+                                title="Add to cart"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="offers-section" id="offers">
+
+            <div class="offer-content">
+
+                <span>EVERY SUNDAY</span>
+
+                <h2>
+                    Buy 2,
+                    <br>
+                    <strong>Get 1 FREE!</strong>
+                </h2>
+
+                <p>
+                    Every Sunday, buy any 2 waffles and get
+                    the third waffle absolutely FREE.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    onclick="activateSundayOffer()"
+                >
+                    <i class="fa-solid fa-gift"></i>
+                    Get Sunday Offer
+                </button>
+
+            </div>
+
+
+            <div class="offer-box">
+
+                <span>BUY</span>
+
+                <strong>2</strong>
+
+                <span>GET 1 FREE</span>
+
+                <small>
+                    EVERY SUNDAY
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <section class="about-section" id="about">
+
+            <div class="about-image">
+
+                <div class="about-card">
+
+                    <span>DMG</span>
+
+                    <strong>
+                        WAFFLES
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <span class="section-label">
+                    ABOUT DMG
+                </span>
+
+                <h2>
+                    More Than Just
+                    <strong>Waffles</strong>
+                </h2>
+
+                <p>
+                    At DMG Waffles, we believe every waffle should
+                    be crispy on the outside, soft on the inside,
+                    and packed with unforgettable flavor.
+                </p>
+
+                <p>
+                    From Mini Stick Waffles to Stick Waffles,
+                    Bubble Bites and Belgian Waffles, every order
+                    is prepared with care using quality ingredients.
+                </p>
+
+
+                <div class="about-stats">
+
+                    <div class="stat">
+                        <strong>100%</strong>
+                        <span>Fresh</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>32</strong>
+                        <span>Items</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>5★</strong>
+                        <span>Quality</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="reviews-section">
+
+            <div class="section-heading">
+
+                <span>REVIEWS</span>
+
+                <h2>
+                    What Our
+                    <strong>Customers Say</strong>
+                </h2>
+
+            </div>
+
+
+            <div class="reviews-grid">
+
+                <div class="review-card">
+
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <p>
+                        "The waffles were crispy, fresh and
+                        absolutely delicious. The chocolate
+                        topping was amazing!"
+                    </p>
+
+                    <div class="review-user">
+
+                        <div class="user-avatar">
+                            A
+                        </div>
+
+                        <div>
+                            <strong>Arjun</strong>
+                            <span>Happy Customer</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="review-card">
+
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <p>
+                        "Loved the presentation and taste.
+                        Definitely one of my favorite waffle
+                        places!"
+                    </p>
+
+                    <div class="review-user">
+
+                        <div class="user-avatar">
+                            P
+                        </div>
+
+                        <div>
+                            <strong>Priya</strong>
+                            <span>Happy Customer</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="review-card">
+
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <p>
+                        "Amazing taste, great portions and
+                        very friendly service. Will definitely
+                        order again!"
+                    </p>
+
+                    <div class="review-user">
+
+                        <div class="user-avatar">
+                            R
+                        </div>
+
+                        <div>
+                            <strong>Rahul</strong>
+                            <span>Happy Customer</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="contact-section" id="contact">
+
+            <div class="section-heading">
+
+                <span>CONTACT US</span>
+
+                <h2>
+                    We'd Love To
+                    <strong>Hear From You</strong>
+                </h2>
+
+                <p>
+                    Have a question, suggestion or feedback?
+                    Send us a message.
+                </p>
+
+            </div>
+
+
+            <div class="contact-container">
+
+                <div class="contact-info">
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>Visit Us</h3>
+
+                            <p>
+                                DMG Waffles
+                                <br>
+                                Parul University, Limda Road,
+                                Pit Gate, Vadodara, India
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>Call Us</h3>
+
+                            <p>
+                                +91 9866144562<br>
+                                +91 9701962295<br>
+                                +91 8341355985
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>Email Us</h3>
+
+                            <p>
+                                dmgwaffles@gmail.com
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>Opening Hours</h3>
+
+                            <p>
+                                Monday - Sunday
+                                <br>
+                                3:00 PM - 10:00 PM
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <form
+    class="contact-form"
+    id="contactForm"
+    action="https://formspree.io/f/xeeroplj"
+    method="POST"
+>
+
+                    <div class="form-group">
+
+                        <label for="contactName">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="contactName"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="contactEmail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="contactEmail"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="contactMessage">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="contactMessage"
+                            name="message"
+                            rows="5"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="#home" class="logo">
+                    <span>DMG</span>
+                    <small>WAFFLES</small>
+                </a>
+
+                <p>
+                    Crispy waffles.
+                    Delicious moments.
+                    Made with love.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="https://instagram.com/dmg_waffles" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Quick Links</h3>
+
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#offers">Offers</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Menu</h3>
+
+                <a href="#menu">Mini Stick Waffle</a>
+                <a href="#menu">Stick Waffle</a>
+                <a href="#menu">Bubble Bites</a>
+                <a href="#menu">Belgian Waffle</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>Contact</h3>
+
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Parul University, Vadodara
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    +91 9866144562
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    dmgwaffles@gmail.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 DMG Waffles. All Rights Reserved.
+            </p>
+
+            <p>
+                Made with ❤️ for waffle lovers.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    
+<!-- FLOATING VIEW CART BAR -->
+<button
+    type="button"
+    class="view-cart-bar"
+    id="viewCartBar"
+    aria-label="View shopping cart"
+    style="display: none;"
+>
+    <span class="view-cart-icon">
+        <i class="fa-solid fa-bag-shopping"></i>
+    </span>
+
+    <span class="view-cart-details">
+        <strong>View Cart</strong>
+        <small><span id="viewCartCount">0</span> items added</small>
+    </span>
+
+    <span class="view-cart-price" id="viewCartTotal">
+        ₹0
+    </span>
+
+    <i class="fa-solid fa-arrow-right view-cart-arrow"></i>
+</button>
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+></div>
+
+
+
+    <aside
+        class="cart-sidebar"
+        id="cartSidebar"
+    >
+
+        <div class="cart-header">
+
+            <div>
+
+                <span>Your Order</span>
+
+                <h2>
+                    Shopping Cart
+                </h2>
+
+            </div>
+
+            <button
+                id="closeCart"
+                class="close-btn"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cartItems"
+        ></div>
+
+
+        <div
+            class="cart-empty"
+            id="cartEmpty"
+        >
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <h3>
+                Your cart is empty
+            </h3>
+
+            <p>
+                Add some delicious waffles!
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="closeCart()"
+            >
+                Browse Menu
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-bottom"
+            id="cartBottom"
+        >
+
+            <div class="coupon-box">
+
+                <input
+                    type="text"
+                    id="couponInput"
+                    placeholder="Coupon code"
+                >
+
+                <button
+                    type="button"
+                    onclick="applyCoupon()"
+                >
+                    Apply
+                </button>
+
+            </div>
+
+
+            <div class="bill-row">
+
+                <span>Subtotal</span>
+
+                <strong id="subtotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="bill-row">
+
+                <span>Delivery</span>
+
+                <strong id="delivery">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="bill-row total-row">
+
+                <span>Total</span>
+
+                <strong id="total">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <button
+                class="checkout-btn"
+                id="checkoutButton"
+            >
+                <span>Proceed to Checkout</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <div
+        class="modal"
+        id="checkoutModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span>CHECKOUT</span>
+
+                    <h2>
+                        Complete Your Order
+                    </h2>
+
+                </div>
+
+                <button
+                    class="close-btn"
+                    id="closeCheckout"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <form id="checkoutForm">
+
+                <div class="form-group">
+
+                    <label for="customerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        required
+                        placeholder="Enter your name"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        required
+                        placeholder="Enter your phone number"
+                    >
+
+                </div>
+
+
+               
+<div class="form-group">
+
+    <label for="customerAddress">
+        Select Parul University Location
+    </label>
+
+    <select id="customerAddress" name="customerAddress">
+        <option value="">Select your location</option>
+        <option value="Atal Gate, Parul University">Atal Gate</option>
+        <option value="Pit Gate, Parul University">Pit Gate</option>
+        <option value="Main Gate, Parul University">Main Gate</option>
+        <option value="Abraham Lincoln, Parul University">Abraham Lincoln</option>
+    </select>
+
+</div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Order Type
+                    </label>
+
+                    <div class="option-group">
+
+                        <label class="option-card">
+
+                            <input
+                                type="radio"
+                                name="orderType"
+                                value="delivery"
+                                checked
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-motorcycle"></i>
+                                Delivery
+                            </span>
+
+                        </label>
+
+
+                        <label class="option-card">
+
+                            <input
+                                type="radio"
+                                name="orderType"
+                                value="pickup"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-store"></i>
+                                Pickup
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Payment Method
+                    </label>
+
+                    <div class="option-group">
+
+                        <label class="option-card">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="cod"
+                                checked
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-money-bill"></i>
+                                Cash
+                            </span>
+
+                        </label>
+
+
+                        <label class="option-card">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="upi"
+                            >
+
+                            <span>
+                                <i class="fa-solid fa-mobile-screen"></i>
+                               Only Cash
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn full-btn"
+                >
+                    <i class="fa-solid fa-check"></i>
+                    Place Order
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="modal success-modal"
+        id="successModal"
+    >
+
+        <div class="modal-content success-content">
+
+            <div class="success-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <span>ORDER CONFIRMED</span>
+
+            <h2>
+                Thank You!
+            </h2>
+
+            <p>
+                Your order has been placed successfully.
+            </p>
+
+            <div class="order-number">
+
+                <span>Order Number</span>
+
+                <strong id="orderNumber">
+                    #DMG0000
+                </strong>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="closeSuccessModal()"
+            >
+                Continue Shopping
+                For any queries please contact me 
+            </button>
+
+        </div>
+
+    </div>
+
+<!-- MY ORDERS MODAL -->
+<div class="modal" id="myOrdersModal">
+    <div class="modal-content my-orders-content">
+
+        <div class="modal-header">
+            <div>
+                <span>YOUR HISTORY</span>
+                <h2>My Orders </h2>
+                <h4>For any queries please contact +91 9866144562</h4>
+            </div>
+
+            <button
+                type="button"
+                class="close-btn"
+                id="closeMyOrders"
+                aria-label="Close My Orders"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="myOrdersList" class="my-orders-list">
+            <p>Loading your orders...</p>
+        </div>
+
+    </div>
+</div>
+
+
+    <div
+        class="toast"
+        id="toast"
+    >
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span id="toastMessage">
+            Added to cart
+        </span>
+
+    </div>
+
+<p style="text-align: center; font-size: 13px; color: #777; padding: 10px;">
+    Need a website for your business?
+    <a href="mailto:kotladhruvachandh@gmail.com"
+       style="color: #d4a900; text-decoration: none; font-weight: 600;">
+        Contact Dhruva
+    </a>
+</p>
+    <script src="script.js"></script>
+
+</body>
+</html>

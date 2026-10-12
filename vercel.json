@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/dmg waffles/api/index.js" },
+    { "source": "/admin", "destination": "/dmg waffles/admin.html" },
+    { "source": "/", "destination": "/dmg waffles/index.html" },
+    { "source": "/(.*)", "destination": "/dmg waffles/$1" }
+  ]
+}
