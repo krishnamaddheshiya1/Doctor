@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/server.js"
+    },
+    {
+      "source": "/manga",
+      "destination": "/manga/index.html"
+    },
+    {
+      "source": "/manga/(.*)",
+      "destination": "/manga/$1"
+    },
+    {
+      "source": "/admin",
+      "destination": "/manga/index.html"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/manga/$1"
+    }
+  ]
+}

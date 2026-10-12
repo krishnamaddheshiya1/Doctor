@@ -2,7 +2,10 @@
   "version": 2,
   "functions": {
     "api/index.js": {
-      "includeFiles": "{public/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**}"
+      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**}"
+    },
+    "backend/server.js": {
+      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**}"
     }
   },
   "rewrites": [
@@ -11,8 +14,20 @@
       "destination": "/api/index.js"
     },
     {
+      "source": "/manga",
+      "destination": "/manga/index.html"
+    },
+    {
+      "source": "/manga/(.*)",
+      "destination": "/manga/$1"
+    },
+    {
       "source": "/admin",
-      "destination": "/admin/index.html"
+      "destination": "/manga/index.html"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/manga/$1"
     }
   ]
 }

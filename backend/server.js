@@ -41,19 +41,28 @@ app.use(
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-const PUBLIC_DIR = path.join(__dirname, "..", "public");
-const ROOT_DIR = path.join(__dirname, "..");
-
-app.use(express.static(PUBLIC_DIR));
-app.use(express.static(ROOT_DIR));
+const staticDirs = [
+    path.join(__dirname, "public"),
+    path.join(__dirname, "manga"),
+    path.join(__dirname),
+    path.join(__dirname, "..", "public"),
+    path.join(__dirname, "..", "manga"),
+    path.join(__dirname, "..")
+];
+for (const dir of staticDirs) {
+    if (fs.existsSync(dir)) {
+        app.use(express.static(dir));
+    }
+}
 
 function getIndexHtmlPath() {
     const locations = [
-        path.join(PUBLIC_DIR, "index.html"),
-        path.join(ROOT_DIR, "index.html"),
+        path.join(__dirname, "index.html"),
+        path.join(__dirname, "public", "index.html"),
+        path.join(__dirname, "..", "public", "index.html"),
+        path.join(__dirname, "..", "index.html"),
         path.join(process.cwd(), "public", "index.html"),
-        path.join(process.cwd(), "index.html"),
-        path.join(__dirname, "index.html")
+        path.join(process.cwd(), "index.html")
     ];
     for (const loc of locations) {
         if (fs.existsSync(loc)) return loc;
@@ -61,14 +70,16 @@ function getIndexHtmlPath() {
     return locations[0];
 }
 
-function getAdminHtmlPath() {
+function getMangaAdminHtmlPath() {
     const locations = [
-        path.join(PUBLIC_DIR, "admin", "index.html"),
-        path.join(PUBLIC_DIR, "admin.html"),
-        path.join(ROOT_DIR, "admin.html"),
-        path.join(process.cwd(), "public", "admin", "index.html"),
-        path.join(process.cwd(), "public", "admin.html"),
-        path.join(__dirname, "admin.html")
+        path.join(__dirname, "manga", "index.html"),
+        path.join(__dirname, "public", "manga", "index.html"),
+        path.join(__dirname, "admin.html"),
+        path.join(__dirname, "..", "manga", "index.html"),
+        path.join(__dirname, "..", "public", "manga", "index.html"),
+        path.join(__dirname, "..", "admin.html"),
+        path.join(process.cwd(), "public", "manga", "index.html"),
+        path.join(process.cwd(), "manga", "index.html")
     ];
     for (const loc of locations) {
         if (fs.existsSync(loc)) return loc;
@@ -76,6 +87,22 @@ function getAdminHtmlPath() {
     return locations[0];
 }
 
+function getAdminJsPath() {
+    const locations = [
+        path.join(__dirname, "manga", "admin.js"),
+        path.join(__dirname, "admin.js"),
+        path.join(__dirname, "public", "manga", "admin.js"),
+        path.join(__dirname, "..", "manga", "admin.js"),
+        path.join(__dirname, "..", "admin.js"),
+        path.join(__dirname, "..", "public", "manga", "admin.js")
+    ];
+    for (const loc of locations) {
+        if (fs.existsSync(loc)) return loc;
+    }
+    return locations[0];
+}
+
+// Serve main customer website
 app.get("/", function (req, res, next) {
     const indexPath = getIndexHtmlPath();
     if (fs.existsSync(indexPath)) {
@@ -84,12 +111,28 @@ app.get("/", function (req, res, next) {
     next();
 });
 
-app.get("/admin", function (req, res, next) {
-    const adminPath = getAdminHtmlPath();
-    if (fs.existsSync(adminPath)) {
-        return res.sendFile(adminPath);
+// Serve admin dashboard at /manga
+app.get(["/manga", "/manga/index.html"], function (req, res, next) {
+    const mangaPath = getMangaAdminHtmlPath();
+    if (fs.existsSync(mangaPath)) {
+        return res.sendFile(mangaPath);
     }
     next();
+});
+
+// Serve admin javascript for both /manga and /admin
+app.get(["/manga/admin.js", "/admin.js"], function (req, res) {
+    const jsPath = getAdminJsPath();
+    if (fs.existsSync(jsPath)) {
+        res.setHeader("Content-Type", "application/javascript");
+        return res.sendFile(jsPath);
+    }
+    res.status(404).end();
+});
+
+// Redirect old /admin to /manga
+app.get(["/admin", "/admin/index.html"], function (req, res) {
+    res.redirect(301, "/manga");
 });
 
 function readOrders() {
@@ -715,6 +758,12 @@ app.delete(
 
 app.use(
     function (req, res) {
+        if (!req.path.startsWith("/api")) {
+            const indexPath = getIndexHtmlPath();
+            if (fs.existsSync(indexPath)) {
+                return res.sendFile(indexPath);
+            }
+        }
         res.status(404).json({
             success: false,
             message:

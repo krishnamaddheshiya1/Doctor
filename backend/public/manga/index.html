@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DMG Waffles | Owner Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #111;
+        }
+
+        .header {
+            background: #111;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .logo span {
+            background: #ffd21f;
+            color: #111;
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .dashboard-title {
+            margin-bottom: 25px;
+        }
+
+        .dashboard-title h1 {
+            font-size: 32px;
+        }
+
+        .dashboard-title p {
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns:
+                repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.06);
+        }
+
+        .stat-card i {
+            width: 45px;
+            height: 45px;
+            background: #ffd21f;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .stat-card span {
+            display: block;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 28px;
+            margin-top: 5px;
+        }
+
+        .orders-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .orders-header h2 {
+            font-size: 24px;
+        }
+
+        .refresh-btn {
+            border: none;
+            background: #111;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .orders {
+            display: grid;
+            gap: 20px;
+        }
+
+        .order-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.06);
+        }
+
+        .order-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 18px;
+            margin-bottom: 18px;
+        }
+
+        .order-number {
+            font-size: 19px;
+            font-weight: 900;
+        }
+
+        .order-date {
+            color: #777;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .status {
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .status-new {
+            background: #fff0b3;
+        }
+
+        .status-preparing {
+            background: #dceeff;
+        }
+
+        .status-ready {
+            background: #d9ffd9;
+        }
+
+        .status-completed {
+            background: #ddd;
+        }
+
+        .status-cancelled {
+            background: #ffd7d7;
+            color: #a00;
+        }
+
+        .order-details {
+            display: grid;
+            grid-template-columns:
+                repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail {
+            background: #f8f8f8;
+            padding: 13px;
+            border-radius: 8px;
+        }
+
+        .detail span {
+            display: block;
+            color: #777;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .detail strong {
+            font-size: 13px;
+        }
+
+        .items {
+            border-top: 1px solid #eee;
+            padding-top: 18px;
+        }
+
+        .items h3 {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            font-weight: 700;
+        }
+
+        .item-qty {
+            color: #777;
+        }
+
+        .item-price {
+            font-weight: 800;
+        }
+
+        .order-total {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 2px solid #111;
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .order-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .status-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 700;
+            background: #eee;
+        }
+
+        .status-btn:hover {
+            background: #ffd21f;
+        }
+
+        .delete-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            background: #ffdddd;
+            color: #a00000;
+            font-weight: 700;
+        }
+
+        .empty {
+            background: white;
+            padding: 60px;
+            text-align: center;
+            border-radius: 15px;
+            color: #777;
+        }
+
+        .empty i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #ffd21f;
+        }
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .dashboard {
+                padding: 20px 15px;
+            }
+
+            .header {
+                padding: 18px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .order-details {
+                grid-template-columns: 1fr;
+            }
+
+            .order-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="logo">
+        <span>DMG</span>
+        WAFFLES
+    </div>
+
+    <strong>
+        OWNER DASHBOARD
+    </strong>
+
+</header>
+
+
+<main class="dashboard">
+
+
+    <div class="dashboard-title">
+
+        <h1>
+            Order Dashboard
+        </h1>
+
+        <p>
+            Manage and prepare customer orders.
+        </p>
+
+    </div>
+
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-receipt"></i>
+
+            <span>
+                Total Orders
+            </span>
+
+            <strong id="totalOrders">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-bell"></i>
+
+            <span>
+                New Orders
+            </span>
+
+            <strong id="newOrders">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-fire"></i>
+
+            <span>
+                Preparing
+            </span>
+
+            <strong id="preparingOrders">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+
+            <span>
+                Revenue
+            </span>
+
+            <strong id="revenue">
+                ₹0
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <div class="orders-header">
+
+        <h2>
+            Customer Orders
+        </h2>
+
+        <button
+            class="refresh-btn"
+            onclick="loadOrders()"
+        >
+            <i class="fa-solid fa-rotate"></i>
+            Refresh
+        </button>
+
+    </div>
+
+
+    <section
+        class="orders"
+        id="orders"
+    >
+
+    </section>
+
+
+</main>
+
+
+
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
