@@ -1,5 +1,9 @@
 {
   "version": 2,
+  "name": "dmg-waffles",
+  "alias": [
+    "dmg-waffles.vercel.app"
+  ],
   "functions": {
     "api/index.js": {
       "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**,data/**}"
