@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const API_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") && window.location.port !== "" && window.location.port !== "5000" && window.location.protocol !== "https:"
+    const isFileProto = window.location.protocol === "file:";
+    const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    const API_URL = (isFileProto || (isLocalhost && window.location.port !== "" && window.location.port !== "5000" && window.location.protocol !== "https:"))
         ? "http://localhost:5000/api"
         : "/api";
 
@@ -351,6 +353,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const toast = document.getElementById("toast");
     const toastMessage = document.getElementById("toastMessage");
+    const pageLoader = document.getElementById("pageLoader");
+
+    if (pageLoader) {
+        setTimeout(function () {
+            pageLoader.style.opacity = "0";
+            pageLoader.style.visibility = "hidden";
+            pageLoader.style.pointerEvents = "none";
+        }, 1800);
+    }
 
     function escapeHTML(value) {
         return String(value ?? "")
@@ -1146,38 +1157,55 @@ if (viewCartBar) {
 
     async function sendOrderToBackend(orderData) {
         let response;
+        const endpointsToTry = [
+            `${API_URL}/orders`,
+            API_URL.endsWith("/api") ? API_URL.replace(/\/api$/, "/orders") : "/orders"
+        ];
+        const uniqueEndpoints = [...new Set(endpointsToTry)];
+        let lastError = null;
 
-        try {
-            response = await fetch(
-                `${API_URL}/orders`,
-                {
+        for (const endpoint of uniqueEndpoints) {
+            try {
+                response = await fetch(endpoint, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         "Accept": "application/json"
                     },
                     body: JSON.stringify(orderData)
-                }
-            );
-        } catch (error) {
-            console.error(
-                "Backend connection error:",
-                error
-            );
+                });
 
+                if (response.status === 404 && endpoint !== uniqueEndpoints[uniqueEndpoints.length - 1]) {
+                    continue;
+                }
+                break;
+            } catch (err) {
+                lastError = err;
+                if (endpoint !== uniqueEndpoints[uniqueEndpoints.length - 1]) {
+                    continue;
+                }
+            }
+        }
+
+        if (!response) {
+            console.error("Backend connection error:", lastError);
             throw new Error(
-                "Cannot connect to DMG Waffles server. Make sure the backend is running on http://localhost:5000."
+                "Cannot connect to DMG Waffles server. Please verify your connection or make sure the backend is running."
             );
         }
 
         const responseText = await response.text();
-
         let data = null;
 
         if (responseText) {
             try {
                 data = JSON.parse(responseText);
             } catch (error) {
+                if (!response.ok) {
+                    throw new Error(
+                        `Server returned HTTP ${response.status}. Please try again.`
+                    );
+                }
                 throw new Error(
                     `Server returned an invalid response. HTTP ${response.status}`
                 );
@@ -1186,8 +1214,8 @@ if (viewCartBar) {
 
         if (!response.ok) {
             throw new Error(
-                data && data.message
-                    ? data.message
+                data && (data.message || data.error)
+                    ? (data.message || data.error)
                     : `Server error: HTTP ${response.status}`
             );
         }
@@ -1558,8 +1586,8 @@ cart = [];
 
         menuToggle.addEventListener(
             "click",
-            function () {
-
+            function (event) {
+                event.stopPropagation();
                 navLinks.classList.toggle(
                     "active"
                 );
@@ -1580,6 +1608,28 @@ cart = [];
                     }
                 );
             });
+
+        document.addEventListener(
+            "click",
+            function (event) {
+                if (
+                    navLinks.classList.contains("active") &&
+                    !navLinks.contains(event.target) &&
+                    !menuToggle.contains(event.target)
+                ) {
+                    navLinks.classList.remove("active");
+                }
+            }
+        );
+
+        window.addEventListener(
+            "resize",
+            function () {
+                if (window.innerWidth > 850 && navLinks.classList.contains("active")) {
+                    navLinks.classList.remove("active");
+                }
+            }
+        );
     }
 
     document.addEventListener(
@@ -1587,6 +1637,10 @@ cart = [];
         function (event) {
 
             if (event.key === "Escape") {
+                if (navLinks) {
+                    navLinks.classList.remove("active");
+                }
+
                 if (myOrdersModal) {
     myOrdersModal.classList.remove("active");
 }

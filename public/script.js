@@ -353,6 +353,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const toast = document.getElementById("toast");
     const toastMessage = document.getElementById("toastMessage");
+    const pageLoader = document.getElementById("pageLoader");
+
+    if (pageLoader) {
+        setTimeout(function () {
+            pageLoader.style.opacity = "0";
+            pageLoader.style.visibility = "hidden";
+            pageLoader.style.pointerEvents = "none";
+        }, 1800);
+    }
 
     function escapeHTML(value) {
         return String(value ?? "")
@@ -1577,8 +1586,8 @@ cart = [];
 
         menuToggle.addEventListener(
             "click",
-            function () {
-
+            function (event) {
+                event.stopPropagation();
                 navLinks.classList.toggle(
                     "active"
                 );
@@ -1599,6 +1608,28 @@ cart = [];
                     }
                 );
             });
+
+        document.addEventListener(
+            "click",
+            function (event) {
+                if (
+                    navLinks.classList.contains("active") &&
+                    !navLinks.contains(event.target) &&
+                    !menuToggle.contains(event.target)
+                ) {
+                    navLinks.classList.remove("active");
+                }
+            }
+        );
+
+        window.addEventListener(
+            "resize",
+            function () {
+                if (window.innerWidth > 850 && navLinks.classList.contains("active")) {
+                    navLinks.classList.remove("active");
+                }
+            }
+        );
     }
 
     document.addEventListener(
@@ -1606,6 +1637,10 @@ cart = [];
         function (event) {
 
             if (event.key === "Escape") {
+                if (navLinks) {
+                    navLinks.classList.remove("active");
+                }
+
                 if (myOrdersModal) {
     myOrdersModal.classList.remove("active");
 }
