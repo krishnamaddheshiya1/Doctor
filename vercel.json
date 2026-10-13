@@ -1,17 +1,72 @@
 {
   "version": 2,
   "functions": {
+    "api/*.js": {
+      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**,data/**}"
+    },
     "api/index.js": {
-      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**}"
+      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**,data/**}"
     },
     "backend/server.js": {
-      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**}"
+      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**,data/**}"
     }
   },
   "rewrites": [
     {
+      "source": "/api",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/api/orders",
+      "destination": "/api/orders.js"
+    },
+    {
+      "source": "/api/orders/(.*)",
+      "destination": "/api/orders.js"
+    },
+    {
+      "source": "/api/health",
+      "destination": "/api/health.js"
+    },
+    {
+      "source": "/api/dashboard",
+      "destination": "/api/dashboard.js"
+    },
+    {
+      "source": "/api/manga",
+      "destination": "/api/manga.js"
+    },
+    {
+      "source": "/api/manga/(.*)",
+      "destination": "/api/manga.js"
+    },
+    {
+      "source": "/api/admin",
+      "destination": "/api/admin.js"
+    },
+    {
+      "source": "/api/admin/(.*)",
+      "destination": "/api/admin.js"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/index.js"
+    },
+    {
+      "source": "/orders",
+      "destination": "/api/orders.js"
+    },
+    {
+      "source": "/orders/(.*)",
+      "destination": "/api/orders.js"
+    },
+    {
+      "source": "/health",
+      "destination": "/api/health.js"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/api/dashboard.js"
     },
     {
       "source": "/manga",
@@ -28,6 +83,10 @@
     {
       "source": "/admin/(.*)",
       "destination": "/manga/$1"
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/manga/index.html"
     }
   ]
 }

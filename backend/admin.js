@@ -1,4 +1,6 @@
-const API_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") && window.location.port !== "" && window.location.port !== "5000" && window.location.protocol !== "https:"
+const isFileProto = window.location.protocol === "file:";
+const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+const API_URL = (isFileProto || (isLocalhost && window.location.port !== "" && window.location.port !== "5000" && window.location.protocol !== "https:"))
     ? "http://localhost:5000/api"
     : "/api";
 
@@ -20,6 +22,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+async function requestOrdersAPI(endpointPath, options = {}) {
+    const cleanPath = endpointPath.startsWith("/") ? endpointPath : `/${endpointPath}`;
+    const endpointsToTry = [
+        `${API_URL}${cleanPath}`,
+        cleanPath.startsWith("/orders") ? cleanPath : `/orders${cleanPath}`,
+        cleanPath.startsWith("/api") ? cleanPath : `/api${cleanPath}`
+    ];
+    const unique = [...new Set(endpointsToTry)];
+    let lastError = null;
+
+    for (const ep of unique) {
+        try {
+            const res = await fetch(ep, options);
+            if (res.status === 404 && ep !== unique[unique.length - 1]) {
+                continue;
+            }
+            return res;
+        } catch (err) {
+            lastError = err;
+            if (ep !== unique[unique.length - 1]) {
+                continue;
+            }
+        }
+    }
+    throw lastError || new Error("Failed to connect to DMG Waffles server.");
+}
+
 async function loadOrders() {
     const ordersContainer = document.getElementById("orders");
 
@@ -29,7 +58,7 @@ async function loadOrders() {
     }
 
     try {
-        const response = await fetch(`${API_URL}/orders`, {
+        const response = await requestOrdersAPI("/orders", {
             method: "GET",
             headers: {
                 "Accept": "application/json"
@@ -354,8 +383,8 @@ document.addEventListener("click", function (event) {
 
 async function updateStatus(orderId, status) {
     try {
-        const response = await fetch(
-            `${API_URL}/orders/${encodeURIComponent(orderId)}/status`,
+        const response = await requestOrdersAPI(
+            `/orders/${encodeURIComponent(orderId)}/status`,
             {
                 method: "PATCH",
                 headers: {
@@ -410,8 +439,8 @@ async function deleteOrder(orderId) {
     if (!confirmed) return;
 
     try {
-        const response = await fetch(
-            `${API_URL}/orders/${encodeURIComponent(orderId)}`,
+        const response = await requestOrdersAPI(
+            `/orders/${encodeURIComponent(orderId)}`,
             {
                 method: "DELETE",
                 headers: {

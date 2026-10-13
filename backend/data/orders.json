@@ -25,5 +25,148 @@
     "status": "Pending",
     "createdAt": "2026-10-12T18:09:47.414Z",
     "updatedAt": "2026-10-12T18:09:47.414Z"
+  },
+  {
+    "id": "1791885027975l1ye1f",
+    "orderNumber": "DMG123456",
+    "customerName": "Test Customer",
+    "customerPhone": "1234567890",
+    "customerAddress": "Main Gate, Parul University",
+    "orderType": "delivery",
+    "paymentMethod": "cod",
+    "items": [
+      {
+        "id": 1,
+        "name": "Triple Chocolate",
+        "category": "MINI",
+        "price": 49,
+        "quantity": 1,
+        "itemTotal": 49
+      }
+    ],
+    "subtotal": 49,
+    "deliveryCharge": 20,
+    "couponDiscount": 0,
+    "sundayDiscount": 0,
+    "total": 69,
+    "status": "Pending",
+    "createdAt": "2026-10-13T09:50:27.975Z",
+    "updatedAt": "2026-10-13T09:50:27.976Z"
+  },
+  {
+    "id": "1791886635324knfmiq",
+    "orderNumber": "DMG86635324",
+    "customerName": "Rohan Sharma",
+    "customerPhone": "9876543210",
+    "customerAddress": "Main Gate, Parul University",
+    "orderType": "delivery",
+    "paymentMethod": "cod",
+    "items": [
+      {
+        "id": 1,
+        "name": "Triple Chocolate",
+        "category": "MINI",
+        "price": 49,
+        "quantity": 2,
+        "itemTotal": 98
+      },
+      {
+        "id": 1,
+        "name": "FREE Triple Chocolate Mini Waffle",
+        "category": "MINI",
+        "price": 0,
+        "quantity": 1,
+        "itemTotal": 0
+      }
+    ],
+    "subtotal": 98,
+    "deliveryCharge": 20,
+    "couponDiscount": 0,
+    "sundayDiscount": 0,
+    "total": 118,
+    "status": "Pending",
+    "createdAt": "2026-10-13T10:17:15.324Z",
+    "updatedAt": "2026-10-13T10:17:15.324Z"
+  },
+  {
+    "id": "17918866353462cau7w",
+    "orderNumber": "DMG86635346",
+    "customerName": "Priya Patel",
+    "customerPhone": "9123456780",
+    "customerAddress": "",
+    "orderType": "pickup",
+    "paymentMethod": "upi",
+    "items": [
+      {
+        "id": 5,
+        "name": "Rainbow Truffle",
+        "category": "MINI",
+        "price": 59,
+        "quantity": 1,
+        "itemTotal": 59
+      }
+    ],
+    "subtotal": 59,
+    "deliveryCharge": 0,
+    "couponDiscount": 0,
+    "sundayDiscount": 0,
+    "total": 59,
+    "status": "Preparing",
+    "createdAt": "2026-10-13T10:17:15.346Z",
+    "updatedAt": "2026-10-13T10:17:50.839Z"
+  },
+  {
+    "id": "1791886697486llsny5",
+    "orderNumber": "DMG86697486",
+    "customerName": "Aman",
+    "customerPhone": "9876543210",
+    "customerAddress": "",
+    "orderType": "pickup",
+    "paymentMethod": "cod",
+    "items": [
+      {
+        "id": 2,
+        "name": "Double Chocolate",
+        "category": "",
+        "price": 49,
+        "quantity": 1,
+        "itemTotal": 49
+      }
+    ],
+    "subtotal": 49,
+    "deliveryCharge": 0,
+    "couponDiscount": 0,
+    "sundayDiscount": 0,
+    "total": 49,
+    "status": "Pending",
+    "createdAt": "2026-10-13T10:18:17.486Z",
+    "updatedAt": "2026-10-13T10:18:17.486Z"
+  },
+  {
+    "id": "17918868408991elft2",
+    "orderNumber": "DMG840866",
+    "customerName": "krishna Maddheshiya",
+    "customerPhone": "9369170812",
+    "customerAddress": "Atal Gate, Parul University",
+    "orderType": "delivery",
+    "paymentMethod": "cod",
+    "items": [
+      {
+        "id": 2,
+        "name": "Double Chocolate",
+        "category": "MINI",
+        "price": 49,
+        "quantity": 1,
+        "itemTotal": 49
+      }
+    ],
+    "subtotal": 49,
+    "deliveryCharge": 20,
+    "couponDiscount": 0,
+    "sundayDiscount": 0,
+    "total": 69,
+    "status": "Pending",
+    "createdAt": "2026-10-13T10:20:40.899Z",
+    "updatedAt": "2026-10-13T10:20:40.899Z"
   }
 ]
