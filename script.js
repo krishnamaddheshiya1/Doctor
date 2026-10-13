@@ -353,6 +353,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const toast = document.getElementById("toast");
     const toastMessage = document.getElementById("toastMessage");
+    const pageLoader = document.getElementById("pageLoader");
+
+    if (pageLoader) {
+        setTimeout(function () {
+            pageLoader.style.opacity = "0";
+            pageLoader.style.visibility = "hidden";
+            pageLoader.style.pointerEvents = "none";
+        }, 1800);
+    }
 
     function escapeHTML(value) {
         return String(value ?? "")
