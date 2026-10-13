@@ -2,24 +2,52 @@
   "version": 2,
   "rewrites": [
     {
+      "source": "/api",
+      "destination": "/server.js?__route=/api"
+    },
+    {
+      "source": "/api/",
+      "destination": "/server.js?__route=/api/"
+    },
+    {
       "source": "/api/(.*)",
-      "destination": "/server.js"
+      "destination": "/server.js?__route=/api/$1"
+    },
+    {
+      "source": "/orders",
+      "destination": "/server.js?__route=/orders"
+    },
+    {
+      "source": "/orders/(.*)",
+      "destination": "/server.js?__route=/orders/$1"
+    },
+    {
+      "source": "/health",
+      "destination": "/server.js?__route=/health"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/server.js?__route=/dashboard"
     },
     {
       "source": "/manga",
-      "destination": "/manga/index.html"
+      "destination": "/server.js?__route=/manga"
     },
     {
       "source": "/manga/(.*)",
-      "destination": "/manga/$1"
+      "destination": "/server.js?__route=/manga/$1"
     },
     {
       "source": "/admin",
-      "destination": "/manga/index.html"
+      "destination": "/server.js?__route=/admin"
     },
     {
       "source": "/admin/(.*)",
-      "destination": "/manga/$1"
+      "destination": "/server.js?__route=/admin/$1"
+    },
+    {
+      "source": "/admin.html",
+      "destination": "/server.js?__route=/admin.html"
     }
   ]
 }

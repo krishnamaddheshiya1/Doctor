@@ -38,11 +38,69 @@ app.use(
     })
 );
 
-// Normalize URL for Vercel serverless function rewrites & proxies
+// Normalize URL for Vercel serverless function rewrites, proxies, and custom paths
 app.use(function (req, res, next) {
-    if (req.url && req.url.startsWith("/api/index.js")) {
-        req.url = req.url.replace(/^\/api\/index\.js/, "") || "/";
+    const rawUrl = req.url || "/";
+    let targetRoute = null;
+
+    // 1. Check if rewrite passed an explicit __route query parameter
+    try {
+        const parsed = new URL(rawUrl, "http://localhost");
+        const routeParam = parsed.searchParams.get("__route");
+        if (routeParam) {
+            parsed.searchParams.delete("__route");
+            const qs = parsed.searchParams.toString();
+            targetRoute = routeParam + (qs ? `?${qs}` : "");
+        }
+    } catch (_) {}
+
+    // 2. Check Vercel headers if __route was not present in query string
+    if (!targetRoute) {
+        const matched =
+            req.headers["x-matched-path"] ||
+            req.headers["x-vercel-matched-path"] ||
+            req.headers["x-forwarded-uri"] ||
+            req.headers["x-rewrite-url"];
+        if (
+            matched &&
+            typeof matched === "string" &&
+            !matched.startsWith("/api/index.js")
+        ) {
+            const queryIdx = rawUrl.indexOf("?");
+            const qs = queryIdx !== -1 ? rawUrl.slice(queryIdx) : "";
+            targetRoute = matched.split("?")[0] + qs;
+        }
     }
+
+    // 3. Check req.originalUrl if available and not /api/index.js
+    if (!targetRoute && req.originalUrl && typeof req.originalUrl === "string") {
+        const cleanOrig = req.originalUrl.split("?")[0];
+        if (
+            cleanOrig !== "/api/index.js" &&
+            cleanOrig !== "/api/index" &&
+            cleanOrig !== ""
+        ) {
+            targetRoute = req.originalUrl;
+        }
+    }
+
+    if (targetRoute) {
+        req.url = targetRoute;
+    } else if (
+        req.url &&
+        (req.url === "/api/index.js" || req.url.startsWith("/api/index.js?"))
+    ) {
+        // Fallback when /api/index.js is invoked directly without extra route info
+        req.url = "/api";
+    }
+
+    // Clean any duplicate slashes in the path while preserving query parameters
+    if (req.url) {
+        const [p, q] = req.url.split("?");
+        const cleanP = p.replace(/\/{2,}/g, "/");
+        req.url = cleanP + (q !== undefined ? `?${q}` : "");
+    }
+
     next();
 });
 
@@ -73,7 +131,26 @@ const staticDirs = [
 ];
 for (const dir of staticDirs) {
     if (fs.existsSync(dir)) {
-        app.use(express.static(dir));
+        app.use(function (req, res, next) {
+            const p = req.path || "";
+            // Never let static middleware intercept API routes, order endpoints, or admin dashboard pages
+            if (
+                p === "/api" ||
+                p.startsWith("/api/") ||
+                p === "/orders" ||
+                p.startsWith("/orders/") ||
+                p === "/health" ||
+                p.startsWith("/health/") ||
+                p === "/dashboard" ||
+                p.startsWith("/dashboard/") ||
+                p === "/manga" ||
+                p === "/admin" ||
+                p === "/admin.html"
+            ) {
+                return next();
+            }
+            return express.static(dir)(req, res, next);
+        });
     }
 }
 
@@ -325,14 +402,14 @@ app.get(["/api", "/api/"], function (req, res) {
     });
 });
 
-app.get(["/api/health", "/health"], function (req, res) {
+app.get(["/api/health", "/health", "/api/health/", "/health/"], function (req, res) {
     res.json({
         success: true,
         message: "API is healthy"
     });
 });
 
-app.get(["/api/dashboard", "/dashboard"], function (req, res) {
+app.get(["/api/dashboard", "/dashboard", "/api/dashboard/", "/dashboard/"], function (req, res) {
     try {
         const orders = readOrders();
         const totalOrders = orders.length;
@@ -374,7 +451,7 @@ app.get(["/api/dashboard", "/dashboard"], function (req, res) {
 });
 
 // GET all orders
-app.get(["/api/orders", "/orders"], function (req, res) {
+app.get(["/api/orders", "/orders", "/api/orders/", "/orders/"], function (req, res) {
     try {
         const orders = readOrders();
 
@@ -435,7 +512,7 @@ app.get(["/api/orders/:orderNumber", "/orders/:orderNumber"], function (req, res
 });
 
 // POST create order (supports both /api/orders and /orders)
-app.post(["/api/orders", "/orders"], function (req, res) {
+app.post(["/api/orders", "/orders", "/api/orders/", "/orders/"], function (req, res) {
     try {
         let body = req.body;
         if (typeof body === "string") {
@@ -565,7 +642,7 @@ app.post(["/api/orders", "/orders"], function (req, res) {
 });
 
 // PATCH order status
-app.patch(["/api/orders/:id/status", "/orders/:id/status"], function (req, res) {
+app.patch(["/api/orders/:id/status", "/orders/:id/status", "/api/orders/:id", "/orders/:id"], function (req, res) {
     try {
         const orders = readOrders();
         const targetId = String(req.params.id);

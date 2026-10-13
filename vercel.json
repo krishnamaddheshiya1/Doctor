@@ -1,92 +1,90 @@
 {
   "version": 2,
   "functions": {
-    "api/*.js": {
-      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**,data/**}"
-    },
     "api/index.js": {
-      "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**,data/**}"
-    },
-    "backend/server.js": {
       "includeFiles": "{public/**,manga/**,*.html,*.css,*.js,*.jpg,*.png,*.jpeg,backend/**,data/**}"
     }
   },
   "rewrites": [
     {
       "source": "/api",
-      "destination": "/api/index.js"
+      "destination": "/api/index.js?__route=/api"
+    },
+    {
+      "source": "/api/",
+      "destination": "/api/index.js?__route=/api/"
     },
     {
       "source": "/api/orders",
-      "destination": "/api/orders.js"
+      "destination": "/api/index.js?__route=/api/orders"
     },
     {
       "source": "/api/orders/(.*)",
-      "destination": "/api/orders.js"
+      "destination": "/api/index.js?__route=/api/orders/$1"
     },
     {
       "source": "/api/health",
-      "destination": "/api/health.js"
+      "destination": "/api/index.js?__route=/api/health"
     },
     {
       "source": "/api/dashboard",
-      "destination": "/api/dashboard.js"
+      "destination": "/api/index.js?__route=/api/dashboard"
     },
     {
       "source": "/api/manga",
-      "destination": "/api/manga.js"
+      "destination": "/api/index.js?__route=/api/manga"
     },
     {
       "source": "/api/manga/(.*)",
-      "destination": "/api/manga.js"
+      "destination": "/api/index.js?__route=/api/manga/$1"
     },
     {
       "source": "/api/admin",
-      "destination": "/api/admin.js"
+      "destination": "/api/index.js?__route=/api/admin"
     },
     {
       "source": "/api/admin/(.*)",
-      "destination": "/api/admin.js"
+      "destination": "/api/index.js?__route=/api/admin/$1"
     },
     {
       "source": "/api/(.*)",
-      "destination": "/api/index.js"
+      "destination": "/api/index.js?__route=/api/$1"
     },
     {
       "source": "/orders",
-      "destination": "/api/orders.js"
+      "destination": "/api/index.js?__route=/orders"
     },
     {
       "source": "/orders/(.*)",
-      "destination": "/api/orders.js"
+      "destination": "/api/index.js?__route=/orders/$1"
     },
     {
       "source": "/health",
-      "destination": "/api/health.js"
+      "destination": "/api/index.js?__route=/health"
     },
     {
       "source": "/dashboard",
-      "destination": "/api/dashboard.js"
+      "destination": "/api/index.js?__route=/dashboard"
     },
     {
       "source": "/manga",
-      "destination": "/manga/index.html"
+      "destination": "/api/index.js?__route=/manga"
     },
     {
       "source": "/manga/(.*)",
-      "destination": "/manga/$1"
+      "destination": "/api/index.js?__route=/manga/$1"
     },
     {
       "source": "/admin",
-      "destination": "/manga/index.html"
+      "destination": "/api/index.js?__route=/admin"
     },
     {
       "source": "/admin/(.*)",
-      "destination": "/manga/$1"
+      "destination": "/api/index.js?__route=/admin/$1"
     },
     {
       "source": "/admin.html",
-      "destination": "/manga/index.html"
+      "destination": "/api/index.js?__route=/admin.html"
     }
   ]
 }
